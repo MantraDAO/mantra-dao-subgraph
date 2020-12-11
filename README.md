@@ -1,2 +1,1 @@
-# mantra-dao-subgraph
-🕉️ MANTRA DAO subgraph 📊
+# 🕉️ MANTRA DAO OM Staking v2 Subgraph 📊
