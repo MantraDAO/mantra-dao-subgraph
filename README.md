@@ -26,6 +26,6 @@ graph deploy \
     
 Note:
 
-To speed up syncing, you can specity a block height in schema.yaml
+To speed up syncing, you can specify a block height in subgraph.yaml
 
 
