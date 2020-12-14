@@ -1,0 +1,109 @@
+type Approval @entity {
+  id: ID!
+  value: BigInt!
+  owner: Bytes! # address
+}
+
+type Claim @entity {
+  id: ID!
+  requestedAmount: BigInt!
+  claimedAmount: BigInt!
+  feeAmount: BigInt!
+  burnedAmount: BigInt!
+  account: Bytes! # address
+}
+
+type StrategyUpdate @entity {
+  id: ID!
+  perBlockReward: BigInt!
+  startBlockNumber: BigInt!
+  endBlockNumber: BigInt!
+}
+
+type FeeClaimed @entity {
+  id: ID!
+  receiver: Bytes! # address
+  amount: BigInt!
+}
+
+type Migrated @entity {
+  id: ID!
+
+  account: Bytes! # address
+  omTokenV1StakeAmount: BigInt!
+  stakingPoolV1Reward: BigInt!
+  stakingPoolV2Reward: BigInt!
+}
+
+type NextStrategyRemoved @entity {
+  id: ID!
+
+}
+
+type NextStrategyUpdated @entity {
+  id: ID!
+  perBlockReward: BigInt!
+  startBlockNumber: BigInt!
+  endBlockNumber: BigInt!
+
+}
+
+type PoolIncreased @entity {
+  id: ID!
+  payer: Bytes! # address
+  amount: BigInt!
+
+}
+
+type PriceUpdated @entity {
+  id: ID!
+  base: BigInt!
+  mantissa: BigInt!
+  exponentiation: BigInt!
+
+}
+
+type RewardsUnlocked @entity {
+  id: ID!
+  amount: BigInt!
+
+}
+
+type Staked @entity {
+  id: ID!
+  account: Bytes! # address
+  payer: Bytes! # address
+  stakedAmount: BigInt!
+  mintedAmount: BigInt!
+
+}
+
+type Transfer @entity {
+  id: ID!
+  from: Bytes! # address
+  to: Bytes! # address
+  value: BigInt!
+
+}
+
+type Unstaked @entity {
+  id: ID!
+  account: Bytes! # address
+  requestedAmount: BigInt!
+  unstakedAmount: BigInt!
+  burnedAmount: BigInt!
+
+}
+
+type UnstakingTimeUpdated @entity {
+  id: ID!
+  unstakingTime: BigInt!
+
+}
+
+type Withdrawed @entity {
+  id: ID!
+  account: Bytes! # address
+  amount: BigInt!
+
+}

@@ -1,0 +1,77 @@
+specVersion: 0.0.2
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Contract
+    network: kovan
+    source:
+      address: "0xb69776c4CeDF79B3e6760B4DA2B0Ec03e65eb108"
+      abi: Contract
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - Claimed
+        - CurrentStrategyUpdated
+        - FeeClaimed
+        - Migrated
+        - MigratorInitialized
+        - MigratorUpdated
+        - NextStrategyRemoved
+        - NextStrategyUpdated
+        - OwnerChanged
+        - OwnerNominated
+        - PoolIncreased
+        - PriceUpdated
+        - RewardsUnlocked
+        - Staked
+        - Transfer
+        - Unstaked
+        - UnstakingTimeUpdated
+        - Withdrawed
+      abis:
+        - name: Contract
+          file: ./abis/Contract.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: Claimed(indexed address,uint256,uint256,uint256,uint256)
+          handler: handleClaimed
+        - event: CurrentStrategyUpdated(uint256,uint256,uint256)
+          handler: handleCurrentStrategyUpdated
+        - event: FeeClaimed(indexed address,uint256)
+          handler: handleFeeClaimed
+        - event: Migrated(indexed address,uint256,uint256,uint256)
+          handler: handleMigrated
+        - event: MigratorInitialized()
+          handler: handleMigratorInitialized
+        - event: MigratorUpdated(indexed address)
+          handler: handleMigratorUpdated
+        - event: NextStrategyRemoved()
+          handler: handleNextStrategyRemoved
+        - event: NextStrategyUpdated(uint256,uint256,uint256)
+          handler: handleNextStrategyUpdated
+        - event: OwnerChanged(indexed address)
+          handler: handleOwnerChanged
+        - event: OwnerNominated(indexed address)
+          handler: handleOwnerNominated
+        - event: PoolIncreased(indexed address,uint256)
+          handler: handlePoolIncreased
+        - event: PriceUpdated(uint256,uint256,uint256)
+          handler: handlePriceUpdated
+        - event: RewardsUnlocked(uint256)
+          handler: handleRewardsUnlocked
+        - event: Staked(indexed address,indexed address,uint256,uint256)
+          handler: handleStaked
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+        - event: Unstaked(indexed address,uint256,uint256,uint256)
+          handler: handleUnstaked
+        - event: UnstakingTimeUpdated(uint256)
+          handler: handleUnstakingTimeUpdated
+        - event: Withdrawed(indexed address,uint256)
+          handler: handleWithdrawed
+      file: ./src/mapping.ts
