@@ -1,0 +1,240 @@
+<html>
+
+    <div style="float:left;width:400px; height:300px;display:inline-block">
+        Daily staked
+        <canvas id="myChart1" width="200" height="200"></canvas>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+    
+    <script>
+        var ctx1 = document.getElementById('myChart1').getContext('2d');
+
+        let data = [{
+    "id": "18614",
+    "totalLiquidityOM": "1151639",
+    "totalLiquidityUSD": "73167",
+    "txCount": "68"
+}, {
+    "id": "18615",
+    "totalLiquidityOM": "3074874",
+    "totalLiquidityUSD": "210390",
+    "txCount": "76"
+}, {
+    "id": "18616",
+    "totalLiquidityOM": "300830",
+    "totalLiquidityUSD": "19685",
+    "txCount": "34"
+}, {
+    "id": "18617",
+    "totalLiquidityOM": "369811",
+    "totalLiquidityUSD": "23087",
+    "txCount": "31"
+}, {
+    "id": "18618",
+    "totalLiquidityOM": "751804",
+    "totalLiquidityUSD": "51408",
+    "txCount": "27"
+}, {
+    "id": "18619",
+    "totalLiquidityOM": "274105",
+    "totalLiquidityUSD": "18316",
+    "txCount": "21"
+}, {
+    "id": "18620",
+    "totalLiquidityOM": "696272",
+    "totalLiquidityUSD": "44593",
+    "txCount": "26"
+}, {
+    "id": "18621",
+    "totalLiquidityOM": "397937",
+    "totalLiquidityUSD": "24137",
+    "txCount": "27"
+}, {
+    "id": "18622",
+    "totalLiquidityOM": "8472179",
+    "totalLiquidityUSD": "491798",
+    "txCount": "170"
+}, {
+    "id": "18623",
+    "totalLiquidityOM": "9681053",
+    "totalLiquidityUSD": "532171",
+    "txCount": "265"
+}, {
+    "id": "18624",
+    "totalLiquidityOM": "8605366",
+    "totalLiquidityUSD": "497915",
+    "txCount": "170"
+}, {
+    "id": "18625",
+    "totalLiquidityOM": "4533752",
+    "totalLiquidityUSD": "246487",
+    "txCount": "169"
+}, {
+    "id": "18626",
+    "totalLiquidityOM": "3214171",
+    "totalLiquidityUSD": "182520",
+    "txCount": "124"
+}, {
+    "id": "18627",
+    "totalLiquidityOM": "3126509",
+    "totalLiquidityUSD": "197479",
+    "txCount": "159"
+}, {
+    "id": "18628",
+    "totalLiquidityOM": "9423203",
+    "totalLiquidityUSD": "553786",
+    "txCount": "245"
+}, {
+    "id": "18629",
+    "totalLiquidityOM": "3583191",
+    "totalLiquidityUSD": "222367",
+    "txCount": "148"
+}, {
+    "id": "18630",
+    "totalLiquidityOM": "1561978",
+    "totalLiquidityUSD": "108423",
+    "txCount": "75"
+}, {
+    "id": "18631",
+    "totalLiquidityOM": "2137723",
+    "totalLiquidityUSD": "151721",
+    "txCount": "40"
+}, {
+    "id": "18632",
+    "totalLiquidityOM": "7068376",
+    "totalLiquidityUSD": "454723",
+    "txCount": "90"
+}, {
+    "id": "18633",
+    "totalLiquidityOM": "1392282",
+    "totalLiquidityUSD": "109824",
+    "txCount": "77"
+}, {
+    "id": "18634",
+    "totalLiquidityOM": "1231427",
+    "totalLiquidityUSD": "121258",
+    "txCount": "71"
+}, {
+    "id": "18635",
+    "totalLiquidityOM": "-4406963",
+    "totalLiquidityUSD": "104684",
+    "txCount": "78"
+}, {
+    "id": "18636",
+    "totalLiquidityOM": "1569755",
+    "totalLiquidityUSD": "125653",
+    "txCount": "128"
+}, {
+    "id": "18637",
+    "totalLiquidityOM": "1681981",
+    "totalLiquidityUSD": "110273",
+    "txCount": "104"
+}, {
+    "id": "18638",
+    "totalLiquidityOM": "1280023",
+    "totalLiquidityUSD": "76736",
+    "txCount": "38"
+}, {
+    "id": "18639",
+    "totalLiquidityOM": "2516573",
+    "totalLiquidityUSD": "153222",
+    "txCount": "119"
+}, {
+    "id": "18640",
+    "totalLiquidityOM": "2015603",
+    "totalLiquidityUSD": "108116",
+    "txCount": "108"
+}, {
+    "id": "18641",
+    "totalLiquidityOM": "2054110",
+    "totalLiquidityUSD": "121428",
+    "txCount": "82"
+}, {
+    "id": "18642",
+    "totalLiquidityOM": "870849",
+    "totalLiquidityUSD": "52786",
+    "txCount": "68"
+}, {
+    "id": "18643",
+    "totalLiquidityOM": "1261995",
+    "totalLiquidityUSD": "104626",
+    "txCount": "62"
+}, {
+    "id": "18644",
+    "totalLiquidityOM": "1746938",
+    "totalLiquidityUSD": "132820",
+    "txCount": "105"
+}, {
+    "id": "18645",
+    "totalLiquidityOM": "3324397",
+    "totalLiquidityUSD": "266938",
+    "txCount": "152"
+}, {
+    "id": "18646",
+    "totalLiquidityOM": "6686858",
+    "totalLiquidityUSD": "742485",
+    "txCount": "103"
+}, {
+    "id": "18647",
+    "totalLiquidityOM": "5976002",
+    "totalLiquidityUSD": "606905",
+    "txCount": "64"
+}, {
+    "id": "18648",
+    "totalLiquidityOM": "1958261",
+    "totalLiquidityUSD": "187457",
+    "txCount": "41"
+}, {
+    "id": "18649",
+    "totalLiquidityOM": "1257691",
+    "totalLiquidityUSD": "113259",
+    "txCount": "38"
+}, {
+    "id": "18650",
+    "totalLiquidityOM": "996646",
+    "totalLiquidityUSD": "99727",
+    "txCount": "67"
+}, {
+    "id": "18651",
+    "totalLiquidityOM": "-610375",
+    "totalLiquidityUSD": "99182",
+    "txCount": "85"
+}, {
+    "id": "18652",
+    "totalLiquidityOM": "1521582",
+    "totalLiquidityUSD": "209963",
+    "txCount": "70"
+}, {
+    "id": "18653",
+    "totalLiquidityOM": "236589",
+    "totalLiquidityUSD": "27306",
+    "txCount": "19"
+}]
+var myChart1 = new Chart(ctx1, {
+    type: 'bar',
+    data: {
+        labels: data.map((data) => {
+            return data.id - 18613
+        }),
+        datasets: [{
+            label: '$ of OM staked',
+            data: data.map((data) => {
+                return data.totalLiquidityUSD
+            }),
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+    </script>
+</html>

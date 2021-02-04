@@ -3,12 +3,12 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: Contract
-    network: kovan
+    name: OmStaking
+    network: mainnet
     source:
-      address: "0xb69776c4CeDF79B3e6760B4DA2B0Ec03e65eb108"
+      address: "0x9E15Ad979919bB4db331Bfe864475Ae3BFFebA93"
       abi: Contract
-      startBlock: 22473832
+      startBlock: 11471417 
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.4
@@ -33,6 +33,7 @@ dataSources:
         - Unstaked
         - UnstakingTimeUpdated
         - Withdrawed
+        - MantraDaoDayData
       abis:
         - name: Contract
           file: ./abis/Contract.json
@@ -41,26 +42,6 @@ dataSources:
           handler: handleApproval
         - event: Claimed(indexed address,uint256,uint256,uint256,uint256)
           handler: handleClaimed
-        - event: CurrentStrategyUpdated(uint256,uint256,uint256)
-          handler: handleCurrentStrategyUpdated
-        - event: FeeClaimed(indexed address,uint256)
-          handler: handleFeeClaimed
-        - event: Migrated(indexed address,uint256,uint256,uint256)
-          handler: handleMigrated
-        - event: MigratorInitialized()
-          handler: handleMigratorInitialized
-        - event: MigratorUpdated(indexed address)
-          handler: handleMigratorUpdated
-        - event: NextStrategyRemoved()
-          handler: handleNextStrategyRemoved
-        - event: NextStrategyUpdated(uint256,uint256,uint256)
-          handler: handleNextStrategyUpdated
-        - event: OwnerChanged(indexed address)
-          handler: handleOwnerChanged
-        - event: OwnerNominated(indexed address)
-          handler: handleOwnerNominated
-        - event: PoolIncreased(indexed address,uint256)
-          handler: handlePoolIncreased
         - event: PriceUpdated(uint256,uint256,uint256)
           handler: handlePriceUpdated
         - event: RewardsUnlocked(uint256)
@@ -71,8 +52,46 @@ dataSources:
           handler: handleTransfer
         - event: Unstaked(indexed address,uint256,uint256,uint256)
           handler: handleUnstaked
-        - event: UnstakingTimeUpdated(uint256)
-          handler: handleUnstakingTimeUpdated
         - event: Withdrawed(indexed address,uint256)
           handler: handleWithdrawed
+      file: ./src/mapping.ts
+  - kind: ethereum/contract
+    name: EthUsdPair
+    network: mainnet
+    source:
+      address: "0x0d4a11d5eeaac28ec3f61d100daf4d40471f1852"
+      abi: Pair
+      startBlock: 11471417 
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - EthUsdSync
+      abis:
+        - name: Pair
+          file: ./abis/Pair.json
+      eventHandlers:
+        - event: Sync(uint112,uint112)
+          handler: handleEthUsdSync
+      file: ./src/mapping.ts
+  - kind: ethereum/contract
+    name: EthOmPair
+    network: mainnet
+    source:
+      address: "0xe46935ae80e05cdebd4a4008b6ccaa36d2845370"
+      abi: Pair
+      startBlock: 11471417 
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - EthOmSync
+      abis:
+        - name: Pair
+          file: ./abis/Pair.json
+      eventHandlers:
+        - event: Sync(uint112,uint112)
+          handler: handleEthOmSync
       file: ./src/mapping.ts
